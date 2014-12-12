@@ -9,7 +9,7 @@ if( typeof global.TEST_DATABASE != "undefined" ) {
 else{
   //dbURI = 'mongodb://test:test@ds053310.mongolab.com:53310/3semproject';
   dbURI = 'mongodb://test:test@ds055990.mongolab.com:55990/sempro';
-  //dbURI = 'mongodb://localhost/testDB'
+  //dbURI = 'mongodb://localhost/hej123'
 }
 
 mongoose.connect(dbURI);

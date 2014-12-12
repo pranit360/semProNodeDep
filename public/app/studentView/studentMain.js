@@ -33,20 +33,28 @@ angular.module('myAppRename.student', ['ngRoute'])
     .controller('student2Ctrl', ['$scope', 'StudentsFactory', 'ClassFactory', function ($scope, StudentsFactory, ClassFactory) {
         $scope.title = 'Your class';
 
-        $scope.getStudentByUserName= function() {
-            StudentsFactory.getStudentByUserName($scope.student)
+        $scope.getStudentByUserName = function () {
+            StudentsFactory.getStudentByUserName($scope.studentName)
                 .success(function (data, status, headers, config) {
                     $scope.wholeStudent = data;
-                }).
-                error(function (data, status, headers, config) {
-                    $scope.error = data;
-                });
-        }
+                    console.log($scope.wholeStudent);
 
-        $scope.getClassById= function() {
-            ClassFactory.getClassById($scope.classId)
-                .success(function (data, status, headers, config) {
-                    $scope.class = data;
+                    StudentsFactory.getAllStudentsByClassId($scope.wholeStudent.classId)
+                        .success(function (data, status, headers, config) {
+                            $scope.students = data;
+                            console.log(data);
+                            ClassFactory.getClassById($scope.wholeStudent.classId)
+                                .success(function (data, status, headers, config) {
+                                    $scope.class = data;
+                                    console.log(data);
+                                }).
+                                error(function (data, status, headers, config) {
+                                    $scope.error = data;
+                                });
+                        }).
+                        error(function (data, status, headers, config) {
+                            $scope.error = data;
+                        });
                 }).
                 error(function (data, status, headers, config) {
                     $scope.error = data;

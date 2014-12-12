@@ -11,8 +11,8 @@ function getAllClasses(callback) {
     });
 }
 
-function getClassById(classId, callback) {
-    Class.findById(classId, function (err, classById) {
+function getClassById(Id, callback) {
+    Class.findById(Id, function (err, classById) {
         if (err) {
             return callback(err);
         }

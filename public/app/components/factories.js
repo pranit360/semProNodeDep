@@ -63,6 +63,9 @@ angular.module('myAppRename.factories', [])
         api.getCompletedTaskById = function (id) {                                          //check route
             return $http.get(url + "/" + "completedTaskById" + "/" + id);
         }
+        api.getCompletedTaskByStudentIdAndTaskId = function (studentId, taskId) {
+            return $http.get(url + "/" + "completedTaskByStudentIdAndTaskId" + "/"+ studentId + "/" + taskId);
+        }
         return api;
     })
 

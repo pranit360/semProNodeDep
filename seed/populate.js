@@ -57,7 +57,7 @@ function addStudents() {
     Student.addNewStudent({username: 'Madelina', fullName: 'Madelina Dragan', classId: class1._id}, function (err, data) {
         student2 = data;
     });
-    Student.addNewStudent({username: 'Pranit', fullName: 'Anand', classId: class1._id}, function (err, data) {
+    Student.addNewStudent({username: 'Pranit', fullName: 'Pranit Anand', classId: class1._id}, function (err, data) {
         student3 = data;
     });
     Student.addNewStudent({username: 'Artur', fullName: 'Artur Goodguy', classId: class1._id}, function (err, data) {
@@ -389,10 +389,18 @@ function addCompletedTask() {
     CompletedTask.addNewCompletedTask({
         receivedPoints: 1,
         comment: '',
+        taskId: task1._id,
+        studentId: student4._id
+    }, function (err, data) {
+        completedTask4 = data;
+    });
+    CompletedTask.addNewCompletedTask({
+        receivedPoints: 0,
+        comment: '',
         taskId: task2._id,
         studentId: student1._id
     }, function (err, data) {
-        completedTask4 = data;
+        completedTask5 = data;
     });
     CompletedTask.addNewCompletedTask({
         receivedPoints: 1,
@@ -400,7 +408,344 @@ function addCompletedTask() {
         taskId: task2._id,
         studentId: student2._id
     }, function (err, data) {
-        completedTask5 = data;
+        completedTask6 = data;
     });
+    CompletedTask.addNewCompletedTask({
+        receivedPoints: 0,
+        comment: '',
+        taskId: task2._id,
+        studentId: student3._id
+    }, function (err, data) {
+        completedTask7 = data;
+    });
+    CompletedTask.addNewCompletedTask({
+        receivedPoints: 1,
+        comment: '',
+        taskId: task2._id,
+        studentId: student4._id
+    }, function (err, data) {
+        completedTask8 = data;
+    });
+    CompletedTask.addNewCompletedTask({
+        receivedPoints: 1,
+        comment: '',
+        taskId: task3._id,
+        studentId: student1._id
+    }, function (err, data) {
+        completedTask9 = data;
+    });
+    CompletedTask.addNewCompletedTask({
+        receivedPoints: 0,
+        comment: '',
+        taskId: task3._id,
+        studentId: student2._id
+    }, function (err, data) {
+        completedTask10 = data;
+    });
+    CompletedTask.addNewCompletedTask({
+        receivedPoints: 1,
+        comment: '',
+        taskId: task3._id,
+        studentId: student3._id
+    }, function (err, data) {
+        completedTask11 = data;
+    });
+    CompletedTask.addNewCompletedTask({
+        receivedPoints: 0,
+        comment: '',
+        taskId: task3._id,
+        studentId: student4._id
+    }, function (err, data) {
+        completedTask12 = data;
+    });
+    CompletedTask.addNewCompletedTask({
+        receivedPoints: 1,
+        comment: '',
+        taskId: task4._id,
+        studentId: student1._id
+    }, function (err, data) {
+        completedTask13 = data;
+    });
+    CompletedTask.addNewCompletedTask({
+        receivedPoints: 1,
+        comment: '',
+        taskId: task4._id,
+        studentId: student2._id
+    }, function (err, data) {
+        completedTask14 = data;
+    });
+    CompletedTask.addNewCompletedTask({
+        receivedPoints: 1,
+        comment: '',
+        taskId: task4._id,
+        studentId: student3._id
+    }, function (err, data) {
+        completedTask15 = data;
+    });
+    CompletedTask.addNewCompletedTask({
+        receivedPoints: 1,
+        comment: '',
+        taskId: task4._id,
+        studentId: student4._id
+    }, function (err, data) {
+        completedTask16 = data;
+    });
+    CompletedTask.addNewCompletedTask({
+        receivedPoints: 1,
+        comment: '',
+        taskId: task5._id,
+        studentId: student1._id
+    }, function (err, data) {
+        completedTask17 = data;
+    });
+    CompletedTask.addNewCompletedTask({
+        receivedPoints: 1,
+        comment: '',
+        taskId: task5._id,
+        studentId: student2._id
+    }, function (err, data) {
+        completedTask18 = data;
+    });
+    CompletedTask.addNewCompletedTask({
+        receivedPoints: 1,
+        comment: '',
+        taskId: task5._id,
+        studentId: student3._id
+    }, function (err, data) {
+        completedTask19 = data;
+    });
+    CompletedTask.addNewCompletedTask({
+        receivedPoints: 1,
+        comment: '',
+        taskId: task5._id,
+        studentId: student4._id
+    }, function (err, data) {
+        completedTask20 = data;
+    });
+    CompletedTask.addNewCompletedTask({
+        receivedPoints: 1,
+        comment: '',
+        taskId: task6._id,
+        studentId: student1._id
+    }, function (err, data) {
+        completedTask21 = data;
+    });
+    CompletedTask.addNewCompletedTask({
+        receivedPoints: 0,
+        comment: '',
+        taskId: task6._id,
+        studentId: student2._id
+    }, function (err, data) {
+        completedTask22 = data;
+    });
+    CompletedTask.addNewCompletedTask({
+        receivedPoints: 1,
+        comment: '',
+        taskId: task6._id,
+        studentId: student3._id
+    }, function (err, data) {
+        completedTask23 = data;
+    });
+    CompletedTask.addNewCompletedTask({
+        receivedPoints: 0,
+        comment: '',
+        taskId: task6._id,
+        studentId: student4._id
+    }, function (err, data) {
+        completedTask24 = data;
+    });
+    CompletedTask.addNewCompletedTask({
+        receivedPoints: 1,
+        comment: '',
+        taskId: task7._id,
+        studentId: student1._id
+    }, function (err, data) {
+        completedTask25 = data;
+    });
+    CompletedTask.addNewCompletedTask({
+        receivedPoints: 1,
+        comment: '',
+        taskId: task7._id,
+        studentId: student2._id
+    }, function (err, data) {
+        completedTask26 = data;
+    });
+    CompletedTask.addNewCompletedTask({
+        receivedPoints: 0,
+        comment: '',
+        taskId: task7._id,
+        studentId: student3._id
+    }, function (err, data) {
+        completedTask27 = data;
+    });
+    CompletedTask.addNewCompletedTask({
+        receivedPoints: 1,
+        comment: '',
+        taskId: task7._id,
+        studentId: student4._id
+    }, function (err, data) {
+        completedTask28 = data;
+    });
+    CompletedTask.addNewCompletedTask({
+        receivedPoints: 0,
+        comment: '',
+        taskId: task8._id,
+        studentId: student1._id
+    }, function (err, data) {
+        completedTask29 = data;
+    });
+    CompletedTask.addNewCompletedTask({
+        receivedPoints: 1,
+        comment: '',
+        taskId: task8._id,
+        studentId: student2._id
+    }, function (err, data) {
+        completedTask30 = data;
+    });
+    CompletedTask.addNewCompletedTask({
+        receivedPoints: 1,
+        comment: '',
+        taskId: task8._id,
+        studentId: student3._id
+    }, function (err, data) {
+        completedTask31 = data;
+    });
+    CompletedTask.addNewCompletedTask({
+        receivedPoints: 1,
+        comment: '',
+        taskId: task8._id,
+        studentId: student4._id
+    }, function (err, data) {
+        completedTask32 = data;
+    });
+    CompletedTask.addNewCompletedTask({
+        receivedPoints: 1,
+        comment: '',
+        taskId: task1._id,
+        studentId: student5._id
+    }, function (err, data) {
+        completedTask33 = data;
+    });
+    CompletedTask.addNewCompletedTask({
+        receivedPoints: 1,
+        comment: '',
+        taskId: task2._id,
+        studentId: student5._id
+    }, function (err, data) {
+        completedTask34 = data;
+    });
+    CompletedTask.addNewCompletedTask({
+        receivedPoints: 1,
+        comment: '',
+        taskId: task3._id,
+        studentId: student5._id
+    }, function (err, data) {
+        completedTask35 = data;
+    });
+    CompletedTask.addNewCompletedTask({
+        receivedPoints: 1,
+        comment: '',
+        taskId: task4._id,
+        studentId: student5._id
+    }, function (err, data) {
+        completedTask36 = data;
+    });
+    CompletedTask.addNewCompletedTask({
+        receivedPoints: 1,
+        comment: '',
+        taskId: task5._id,
+        studentId: student5._id
+    }, function (err, data) {
+        completedTask37 = data;
+    });
+    CompletedTask.addNewCompletedTask({
+        receivedPoints: 0,
+        comment: '',
+        taskId: task6._id,
+        studentId: student5._id
+    }, function (err, data) {
+        completedTask38 = data;
+    });
+    CompletedTask.addNewCompletedTask({
+        receivedPoints: 1,
+        comment: '',
+        taskId: task7._id,
+        studentId: student5._id
+    }, function (err, data) {
+        completedTask39 = data;
+    });
+    CompletedTask.addNewCompletedTask({
+        receivedPoints: 0,
+        comment: '',
+        taskId: task8._id,
+        studentId: student5._id
+    }, function (err, data) {
+        completedTask40 = data;
+    });
+    CompletedTask.addNewCompletedTask({
+        receivedPoints: 1,
+        comment: '',
+        taskId: task1._id,
+        studentId: student6._id
+    }, function (err, data) {
+        completedTask41 = data;
+    });
+    CompletedTask.addNewCompletedTask({
+        receivedPoints: 1,
+        comment: '',
+        taskId: task2._id,
+        studentId: student6._id
+    }, function (err, data) {
+        completedTask42 = data;
+    });
+    CompletedTask.addNewCompletedTask({
+        receivedPoints: 0,
+        comment: '',
+        taskId: task3._id,
+        studentId: student6._id
+    }, function (err, data) {
+        completedTask43 = data;
+    });
+    CompletedTask.addNewCompletedTask({
+        receivedPoints: 1,
+        comment: '',
+        taskId: task4._id,
+        studentId: student6._id
+    }, function (err, data) {
+        completedTask44 = data;
+    });
+    CompletedTask.addNewCompletedTask({
+        receivedPoints: 0,
+        comment: '',
+        taskId: task5._id,
+        studentId: student6._id
+    }, function (err, data) {
+        completedTask45 = data;
+    });
+    CompletedTask.addNewCompletedTask({
+        receivedPoints: 1,
+        comment: '',
+        taskId: task6._id,
+        studentId: student6._id
+    }, function (err, data) {
+        completedTask46 = data;
+    });
+    CompletedTask.addNewCompletedTask({
+        receivedPoints: 1,
+        comment: '',
+        taskId: task7._id,
+        studentId: student6._id
+    }, function (err, data) {
+        completedTask47 = data;
+    });
+    CompletedTask.addNewCompletedTask({
+        receivedPoints: 1,
+        comment: '',
+        taskId: task8._id,
+        studentId: student6._id
+    }, function (err, data) {
+        completedTask48 = data;
+    });
+
 }
 setTimeout(addCompletedTask, 15000);

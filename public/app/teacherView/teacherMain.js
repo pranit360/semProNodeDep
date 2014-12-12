@@ -224,59 +224,90 @@ angular.module('myAppRename.teacher', ['ngRoute'])
         $scope.getCompletedTasksByTaskId($routeParams.taskId);
     }])
 
-    .controller('Admin9Ctrl', ['$scope', '$routeParams', 'TaskFactory', 'PeriodFactory', 'SemesterFactory', 'StudentsFactory', function ($scope, $routeParams, TaskFactory, PeriodFactory, SemesterFactory, StudentsFactory) {
-        $scope.title = 'View all scores from this period and change them';
-        $scope.getTasksByPeriodId = function (periodId) {
-            TaskFactory.getTasksByPeriod(periodId)
-                .success(function (data, status, headers, config) {
-                    $scope.tasks = data;
-                }).
-                error(function (data, status, headers, config) {
-                    $scope.error = data;
-                });
-        }
-        $scope.getTasksByPeriodId($routeParams.periodId);
+    .controller('Admin9Ctrl', ['$scope', '$routeParams', 'TaskFactory', 'PeriodFactory', 'SemesterFactory', 'StudentsFactory', 'CompletedTaskFactory',
+        function ($scope, $routeParams, TaskFactory, PeriodFactory, SemesterFactory, StudentsFactory, CompletedTaskFactory) {
+            $scope.completedTasksArray = [];
+            $scope.sortedArray = [];
+            var student = [];
 
-        $scope.getPeriod = function (periodId) {
-            PeriodFactory.getPeriodById(periodId)
-                .success(function (data, status, header, config) {
-                    $scope.period = data;
-                }).
-                error(function (data, status, headers, config) {
-                    $scope.error = data;
-                });
-        }
+            $scope.title = 'View all scores from this period and change them';
+            $scope.getTasksByPeriodId = function (periodId) {
+                TaskFactory.getTasksByPeriod(periodId)
+                    .success(function (data, status, headers, config) {
+                        $scope.tasks = data;
+                    }).
+                    error(function (data, status, headers, config) {
+                        $scope.error = data;
+                    });
+            }
+            $scope.getTasksByPeriodId($routeParams.periodId);
 
-        $scope.getPeriod($routeParams.periodId);
+            $scope.getStudentsWithPeriodId = function (periodId) {
+                console.log('1 periodId: ' + periodId)
+                PeriodFactory.getPeriodById(periodId)
+                    .success(function (data, status, header, config) {
+                        console.log('2 ' + JSON.stringify(data))
+                        $scope.period = data;
+                        var semesterId = data.semesterId;
+                        console.log('3 semesterId: ' + data.semesterId);
+                        $scope.getSemester = function (semesterId) {
 
-        console.log('Before semester id');
-        var semesterId = $scope.period.semesterId;
-        console.log('semesterId: '+ semesterId);
+                            SemesterFactory.getSemesterById(semesterId)
+                                .success(function (data, status, header, config) {
+                                    console.log('4' + JSON.stringify(data))
+                                    $scope.semester = data;
+                                    var classId = data.classId;
 
-        $scope.getSemester = function (semesterId) {
-            SemesterFactory.getSemesterById(semesterId)
-                .success(function (data, status, header, config) {
-                    $scope.semester = data;
-                }).
-                error(function (data, status, headers, config) {
-                    $scope.error = data;
-                })
-        }
-        $scope.getSemester(semesterId);
+                                    $scope.getStudent = function (classId) {
+                                        StudentsFactory.getAllStudentsByClassId(classId)
+                                            .success(function (data, status, header, config) {
+                                                $scope.students = data;
+                                                console.log('5' + JSON.stringify(data))
+                                                createSortedArray();
+                                            }).
+                                            error(function (data, status, headers, config) {
+                                                $scope.error = data;
+                                            })
+                                    }
+                                    $scope.getStudent(classId);
+                                    console.log('classId: ' + classId);
+                                }).
+                                error(function (data, status, headers, config) {
+                                    $scope.error = data;
+                                })
+                        }
+                        $scope.getSemester(data.semesterId);
+                    }).
+                    error(function (data, status, headers, config) {
+                        $scope.error = data;
+                    });
+            }
+            $scope.getStudentsWithPeriodId($routeParams.periodId);
 
-        var classId = $scope.semester.classId;
+            function createSortedArray() {
+                for (var i = 0; i < $scope.students.length; i++) {
+                    student = [];
+                    student = $scope.students[i];
+                    helpFunction(student);
+                }
+                console.log($scope.dummyArray);
+            }
 
-        $scope.getStudent = function (classId) {
-            StudentsFactory.getAllStudentsByClassId(classId)
-                .success(function (data, status, header, config) {
-                    $scope.students = data;
-                }).
-                error(function (data, status, headers, config) {
-                    $scope.error = data;
-                })
-        }
-        $scope.getStudents(classId);
-    }])
+            function helpFunction(student) {
+                var studentObj = student;
+                console.log(studentObj)
+                CompletedTaskFactory.getAllCompletedTasksForASpecificStudent(student._id)
+                    .success(function (data, status, headers, config) {
+                        var completedTasksArray = data;
+                        studentObj['points'] = completedTasksArray;
+                        console.log(studentObj);
+                        $scope.sortedArray.push(studentObj);
+                    }).
+                    error(function (data, status, headers, config) {
+                        $scope.error = data;
+                    });
+            }
+        }])
 
     .controller('Admin10Ctrl', ['$scope', 'StudentsFactory', function ($scope, StudentsFactory) {
         $scope.title = 'Students';

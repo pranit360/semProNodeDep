@@ -30,8 +30,8 @@ function addNewCompletedTask(completedTask, callback) {
     });
 }
 
-function getCompletedTaskById(cId, callback) {
-    CompletedTask.find({_id: cId}, function (err, completeTask) {
+function getCompletedTaskById(Id, callback) {
+    CompletedTask.findById(Id, function (err, completeTask) {
         if (err) {
             return callback(err);
 
@@ -40,9 +40,19 @@ function getCompletedTaskById(cId, callback) {
     });
 }
 
+function getCompletedTaskByStudentIdAndTaskId (studentId, taskId, callback){
+    CompletedTask.find({studentId: studentId, taskId: taskId}, function (err, ctList) {
+        if (err) {
+            return callback(err);
+        }
+        return callback(null, ctList);
+    });
+}
+
 module.exports = {
     getAllCompletedTasksByStudentId: getAllCompletedTasksByStudentId,
     getAllCompletedTasksByTaskId: getAllCompletedTasksByTaskId,
     addNewCompletedTask: addNewCompletedTask,
-    getCompletedTaskById: getCompletedTaskById
+    getCompletedTaskById: getCompletedTaskById,
+    getCompletedTaskByStudentIdAndTaskId: getCompletedTaskByStudentIdAndTaskId
 }

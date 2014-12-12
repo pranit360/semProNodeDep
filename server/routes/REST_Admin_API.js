@@ -422,6 +422,38 @@ router.get('/allSemestersByClass/:classId', function (req, res) {
     });
 });
 
+router.get('/completedTaskByStudentIdAndTaskId/:studentId/:taskId', function (req, res) {
+    if (!isDbRunning()) {
+        return;
+    }
+    CompletedTasks.getCompletedTaskByStudentIdAndTaskId(req.params.studentId, req.params.taskId, function (err, completedTask) {
+        if (err) {
+            res.status(err.status || 400);
+            res.end(JSON.stringify({error: err.toString()}));
+            return;
+        }
+        res.header("Content-type", "application/json");
+        res.end(JSON.stringify(completedTask));
+
+    });
+})
+
+router.get('/allSemestersByClass/:classId', function (req, res) {
+    if (!isDbRunning()) {
+        return;
+    }
+    Semester.getAllSemestersByClassId(req.params.classId, function (err, semestersByClassId) {
+        if (err) {
+            res.status(err.status || 400);
+            res.end(JSON.stringify({error: err.toString()}));
+            return;
+        }
+        res.header("Content-type", "application/json");
+        res.end(JSON.stringify(semestersByClassId));
+
+    });
+});
+
 /*router.get('/ClassByPeriod/:periodId', function (req, res) {
     if (!isDbRunning()) {
         return;

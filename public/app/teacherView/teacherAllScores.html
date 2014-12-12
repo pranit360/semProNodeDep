@@ -4,11 +4,14 @@
 
 <table class="table">
     <thead>
-    <th ng-repeat="task in tasks">{{task.name}}</th>
+    <th></th>
+    <th ng-repeat="task in tasks">{{task.name}}
+    </th>
     </thead>
     <tbody>
-    <tr ng-repeat="student in students">
-        <th>{{ student.name }}</th>
+    <tr ng-repeat="s in sortedArray">
+        <td> {{s.username}}</td>
+        <td ng-repeat="p in s.points">{{p.receivedPoints}}</td>
     </tr>
     </tbody>
 </table>
