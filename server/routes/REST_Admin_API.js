@@ -306,7 +306,7 @@ router.get('/Class/:classId', function (req, res) {
     });
 });
 
-router.get('/task/:taskId', function(req, res) {
+router.get('/task/:taskId', function (req, res) {
     if (!isDbRunning()) {
         return;
     }
@@ -337,7 +337,7 @@ router.get('/allStudents', function (req, res) {
 });
 
 /* router.get('completedTask/:completedTaskId', function(req, res){
-    if(!isDbRunning()) {
+ if(!isDbRunning()) {
  return;
  }
  CompletedTasks.getCompletedTaskById(req.params.completedTaskId, function (err, completedTaskById) {
@@ -378,7 +378,7 @@ router.get('/allStudents', function (req, res) {
  res.end(JSON.stringify(periodById));
  });
  }); */
- /*router.get('/allTeachersByClass/:classId', function(req, res) {
+/*router.get('/allTeachersByClass/:classId', function(req, res) {
  if(!isDbRunning()) {
  return;
  }
@@ -391,21 +391,23 @@ router.get('/allStudents', function (req, res) {
  res.header("Content-type", "application/json");
  res.end(JSON.stringify(teachersByClassId));
  });
- });
- router.get('/allStudentsByClass/:classId', function(req, res) {
- if(!isDbRunning()) {
- return;
- }
- Student.getAllStudentsByClassId(req.params.class.classId, function (err, allStudentsByClass) {
- if(err) {
- res.status(err.status || 400);
- res.end(JSON.stringify({error: err.toString()}));
- return;
- }
- res.header("Content-type", "application/json");
- res.end(JSON.stringify(allStudentsByClass));
- });
- }); */
+ });*/
+
+router.get('/allStudentsByClass/:classId', function(req, res) {
+    if(!isDbRunning()) {
+        return;
+    }
+    Student.getAllStudentsByClassId(req.params.classId, function (err, allStudentsByClass) {
+        if(err) {
+            res.status(err.status || 400);
+            res.end(JSON.stringify({error: err.toString()}));
+            return;
+        }
+        res.header("Content-type", "application/json");
+        res.end(JSON.stringify(allStudentsByClass));
+    });
+});
+
 router.get('/allSemestersByClass/:classId', function (req, res) {
     if (!isDbRunning()) {
         return;
@@ -455,20 +457,20 @@ router.get('/allSemestersByClass/:classId', function (req, res) {
 });
 
 /*router.get('/ClassByPeriod/:periodId', function (req, res) {
-    if (!isDbRunning()) {
-        return;
-    }
-    Student.getClassByPeriodId(req.params.periodId, function (err, semestersByClassId) {
-        if (err) {
-            res.status(err.status || 400);
-            res.end(JSON.stringify({error: err.toString()}));
-            return;
-        }
-        res.header("Content-type", "application/json");
-        res.end(JSON.stringify(semestersByClassId));
+ if (!isDbRunning()) {
+ return;
+ }
+ Student.getClassByPeriodId(req.params.periodId, function (err, semestersByClassId) {
+ if (err) {
+ res.status(err.status || 400);
+ res.end(JSON.stringify({error: err.toString()}));
+ return;
+ }
+ res.header("Content-type", "application/json");
+ res.end(JSON.stringify(semestersByClassId));
 
-    });
-}); */
+ });
+ }); */
 
 /*router.get('/teacher/:userName', function (req, res) {
  if(!isDbRunning()) {

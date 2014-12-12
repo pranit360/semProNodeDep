@@ -94,7 +94,7 @@ angular.module('myAppRename.factories', [])
             return $http.get(url + "/" + 'allSemestersByClass' + '/' + classId);
         }
         api.getSemesterById = function (semesterId) {                     //check route
-            return $http.get(url + "/" + semesterId);
+            return $http.get(url + "/" + "semester" + "/" + semesterId);
         }
         return api;
     })
@@ -106,7 +106,7 @@ angular.module('myAppRename.factories', [])
             return $http.post(url + "/" + "oneStudent", newStudent);
         }
         api.getAllStudentsByClassId = function (classId) {               //check route
-            return $http.get(url + "/" + "students/" + classId);
+            return $http.get(url + "/" + "allStudentsByClass" + "/" + classId);
         }
         api.getStudentByUserName = function (studentName) {               //check route
             return $http.get('/userApi' + "/" + "studentByUserName" + "/" + studentName);
