@@ -108,6 +108,9 @@ angular.module('myAppRename.factories', [])
         api.getStudentByUserName = function (studentName) {               //check route
             return $http.get('/userApi' + "/" + "studentByUserName" + "/" + studentName);
         }
+        api.getAllStudents = function () {
+            return $http.get(url + "/" + "allStudents" );
+        }
         return api;
     })
 
@@ -139,7 +142,7 @@ angular.module('myAppRename.factories', [])
             return $http.get(url + "/" + "teacher/" + classId);
         }
         api.getAllTeachers = function () {                            //check route
-            return $http.get(url + "/" + "teacher");
+            return $http.get(url + "/" + "allTeachers");
         }
         return api;
     });

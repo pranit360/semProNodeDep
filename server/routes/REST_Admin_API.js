@@ -321,6 +321,21 @@ router.get('/task/:taskId', function(req, res) {
     });
 });
 
+router.get('/allStudents', function (req, res) {
+    if (!isDbRunning()) {
+        return;
+    }
+    Student.getAllStudents(function (err, allStudents) {
+        if (err) {
+            res.status(err.status || 400);
+            res.end(JSON.stringify({error: err.toString()}));
+            return;
+        }
+        res.header("Content-type", "application/json");
+        res.end(JSON.stringify(allStudents));
+    })
+});
+
 /* router.get('completedTask/:completedTaskId', function(req, res){
     if(!isDbRunning()) {
  return;

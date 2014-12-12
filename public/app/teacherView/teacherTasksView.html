@@ -21,5 +21,59 @@
     </tbody>
 </table>
 
+<form class="form-horizontal"  style="margin-top: 1em;border: 1px solid #cccccc; padding: 0.5em;">
+    <fieldset>
+        <legend>Add task</legend>
+        <div class="form-group">
+            <label for="name" class="control-label col-xs-2"><span class="label label-info">Name</span></label>
+            <div class="col-xs-10">
+                <input ng-model="newTask.name" class="form-control" id="name" placeholder="Name">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="description" class="control-label col-xs-2"><span class="label label-info">Description</span></label>
+            <div class="col-xs-10">
+                <input ng-model="newTask.description" class="form-control" id="description" placeholder="Description">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="maximumPoints" class="control-label col-xs-2"><span class="label label-info">Maximum points</span></label>
+            <div class="col-xs-10">
+                <input ng-model="newTask.maximumPoints" class="form-control" id="maximumPoints" placeholder="Maximum points">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="startTime" class="control-label col-xs-2"><span class="label label-info">Start time</span></label>
+            <div class="col-xs-10">
+                <input ng-model="newTask.startTime" class="form-control" id="startTime" placeholder="Start time">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="endTime" class="control-label col-xs-2"><span class="label label-info">End time</span></label>
+            <div class="col-xs-10">
+                <input ng-model="newTask.endTime" class="form-control" id="endTime" placeholder="End time">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="periodId" class="control-label col-xs-2"><span class="label label-info">Period id</span></label>
+            <div class="col-xs-10">
+                <input ng-model="newTask.periodId" class="form-control" id="periodId" placeholder="Period id (the actual periodId is in the URI)">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-xs-10">
+                <button class="btn btn-default" ng-click="saveTask()">Save</button>
+                <!--<button class="btn btn-default" ng-click="cancel()">Cancel</button>-->
+            </div>
+        </div>
+    </fieldset>
+</form>
+
 <a href="#/teacher"> back </a>
 </body>

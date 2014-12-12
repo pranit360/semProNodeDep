@@ -1,6 +1,22 @@
 <body>
 <h1> {{ title }}</h1>
-<ul>
-    <li><a href="#/teacher"> back </a></li>
-</ul>
+
+<table class="table">
+    <thead>
+    <th>Username</th>
+    <th>Full name</th>
+    <th>Degree</th>
+    <th>Classes ID</th>
+    </thead>
+    <tbody>
+    <tr ng-repeat="teacher in teachers">
+        <th>{{teacher.username}}</a></th>
+        <th>{{teacher.fullName}}</a></th>
+        <th>{{teacher.degree}}</th>
+        <th>{{teacher.classId}}</th>
+    </tr>
+    </tbody>
+</table>
+
+<a href="#/teacher"> back </a>
 </body>

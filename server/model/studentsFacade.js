@@ -58,9 +58,19 @@ function addMoreStudents(studentsArray, callback) {
         });
 } */
 
+function getAllStudents(callback) {
+    Student.find( function (err, students) {
+        if (err) {
+            return callback (err);
+        }
+        callback (null, students);
+    });
+}
+
 module.exports = {
     getAllStudentsByClassId: getAllStudentsByClassId,
     getStudentByUserName: getStudentByUserName,
-    addNewStudent: addNewStudent
+    addNewStudent: addNewStudent,
+    getAllStudents: getAllStudents
 
 }

@@ -18,9 +18,14 @@ angular.module('myAppRename.teacher', ['ngRoute'])
             controller: 'Admin2Ctrl'
         });
 
-        $routeProvider.when('/teacher/viewUsers', {
+        $routeProvider.when('/teacher/viewTeachers', {
             templateUrl: 'app/teacherView/teacherUserView.html',
             controller: 'Admin3Ctrl'
+        });
+
+        $routeProvider.when('/teacher/viewStudents', {
+            templateUrl: 'app/teacherView/teacherAllStudentsListView.html',
+            controller: 'Admin10Ctrl'
         });
 
         $routeProvider.when('/teacher/viewClasses', {
@@ -55,7 +60,7 @@ angular.module('myAppRename.teacher', ['ngRoute'])
     }])
 
 
-    .controller('AdminCtrl', ['$scope', '$http', function ($scope, $http) {
+    .controller('AdminCtrl', ['$scope', '$http', function ($scope) {
         $scope.title = 'AdminCtrl';
     }])
 
@@ -64,12 +69,6 @@ angular.module('myAppRename.teacher', ['ngRoute'])
 
         $scope.submitUser = function () {
             TeachersFactory.addTeacher($scope.person)
-                //$http({
-                //    method: 'POST',
-                //    url: '/oneTeacher'
-                //})
-                //.post('/oneTeacher', $scope.person)
-
                 .success(function (data, status, headers, config) {
                     $scope.person = data;
                 })
@@ -94,8 +93,15 @@ angular.module('myAppRename.teacher', ['ngRoute'])
         }
     }])
 
-    .controller('Admin3Ctrl', ['$scope', function ($scope) {
-        $scope.title = 'Admin3Ctrl';
+    .controller('Admin3Ctrl', ['$scope', 'TeachersFactory', function ($scope, TeachersFactory) {
+        $scope.title = 'Teachers';
+        TeachersFactory.getAllTeachers()
+            .success(function (data, status, headers, config) {
+                $scope.teachers = data;
+            }).
+            error(function (data, status, headers, config) {
+                $scope.error = data;
+            });
     }])
 
     .controller('Admin4Ctrl', ['$scope', 'ClassFactory', function ($scope, ClassFactory) {
@@ -107,6 +113,15 @@ angular.module('myAppRename.teacher', ['ngRoute'])
             error(function (data, status, headers, config) {
                 $scope.error = data;
             });
+        $scope.saveClass = function () {
+            ClassFactory.addOneClass($scope.newClass)
+                .success(function (data, status, headers, config) {
+                    $scope.newClass = {};
+                })
+                .error(function (data, status, headers, config) {
+                    $scope.error = data;
+                });
+        }
     }])
 
     .controller('Admin5Ctrl', ['$scope', '$routeParams', 'SemesterFactory', 'ClassFactory', function ($scope, $routeParams, SemesterFactory, ClassFactory) {
@@ -134,6 +149,16 @@ angular.module('myAppRename.teacher', ['ngRoute'])
                 });
         }
         $scope.getSemestersByClassId($routeParams.classId);
+
+        $scope.saveSemester = function () {
+            SemesterFactory.addOneSemester($scope.newSemester)
+                .success(function (data, status, headers, config) {
+                    $scope.newSemester = {};
+                })
+                .error(function (data, status, headers, config) {
+                    $scope.error = data;
+                });
+        }
     }])
 
     .controller('Admin6Ctrl', ['$scope', '$routeParams', 'PeriodFactory', function ($scope, $routeParams, PeriodFactory) {
@@ -148,6 +173,17 @@ angular.module('myAppRename.teacher', ['ngRoute'])
                 });
         }
         $scope.getPeriodsBySemesterId($routeParams.semesterId);
+
+        $scope.savePeriod = function () {
+            PeriodFactory.addPeriod($scope.newPeriod)
+                .success(function (data, status, headers, config) {
+                    $scope.newPeriod = {};
+                })
+                .error(function (data, status, headers, config) {
+                    $scope.error = data;
+                });
+        }
+
     }])
 
     .controller('Admin7Ctrl', ['$scope', '$routeParams', 'TaskFactory', function ($scope, $routeParams, TaskFactory) {
@@ -162,10 +198,20 @@ angular.module('myAppRename.teacher', ['ngRoute'])
                 });
         }
         $scope.getTasksByPeriodId($routeParams.periodId);
+
+        $scope.saveTask = function () {
+            TaskFactory.addTask($scope.newTask)
+                .success(function (data, status, headers, config) {
+                    $scope.newTask = {};
+                })
+                .error(function (data, status, headers, config) {
+                    $scope.error = data;
+                });
+        }
     }])
 
     .controller('Admin8Ctrl', ['$scope', '$routeParams', 'CompletedTaskFactory', function ($scope, $routeParams, CompletedTaskFactory) {
-        $scope.title = 'View all completed tasks in tasks';
+        $scope.title = 'View all completed tasks in task';
         $scope.getCompletedTasksByTaskId = function (taskId) {
             CompletedTaskFactory.getAllCompletedTasksForASpecificTask(taskId)
                 .success(function (data, status, headers, config) {
@@ -205,7 +251,7 @@ angular.module('myAppRename.teacher', ['ngRoute'])
 
         console.log('Before semester id');
         var semesterId = $scope.period.semesterId;
-        console.log('semesterId: ' + semesterId);
+        console.log('semesterId: '+ semesterId);
 
         $scope.getSemester = function (semesterId) {
             SemesterFactory.getSemesterById(semesterId)
@@ -230,5 +276,16 @@ angular.module('myAppRename.teacher', ['ngRoute'])
                 })
         }
         $scope.getStudents(classId);
-    }]);
+    }])
+
+    .controller('Admin10Ctrl', ['$scope', 'StudentsFactory', function ($scope, StudentsFactory) {
+        $scope.title = 'Students';
+        StudentsFactory.getAllStudents()
+            .success(function (data, status, headers, config) {
+                $scope.students = data;
+            }).
+            error(function (data, status, headers, config) {
+                $scope.error = data;
+            });
+    }])
 
