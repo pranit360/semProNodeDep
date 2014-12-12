@@ -205,7 +205,7 @@ angular.module('myAppRename.teacher', ['ngRoute'])
 
         console.log('Before semester id');
         var semesterId = $scope.period.semesterId;
-        console.log('semesterId: '+ semesterId);
+        console.log('semesterId: ' + semesterId);
 
         $scope.getSemester = function (semesterId) {
             SemesterFactory.getSemesterById(semesterId)

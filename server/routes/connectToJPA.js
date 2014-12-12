@@ -7,8 +7,8 @@ var httpSend = function(username, password, callback)
 {
 
     var options={
-        hostname:'localhost',
-        port:'9999',
+        hostname:'137.135.179.104',
+        port:'8999',
         method:'GET',
         path: '/login/' + encodeURIComponent(username) + ',' + encodeURIComponent(password)
     };
@@ -41,8 +41,8 @@ var httpSend = function(username, password, callback)
 var httpSend1 = function(username, callback)
 {
     var options={
-        hostname:'localhost',
-        port:'9999',
+        hostname:'137.135.179.104',
+        port:'8999',
         method:'GET',
         path: '/find/' + encodeURIComponent(username)
     };
@@ -79,10 +79,15 @@ var httpPost=function (username, password, rolename, callback){
         "password": password,
         "roleName": rolename
     }
+
+//var url='http://137.135.179.104:8999';
+
     var post_data = JSON.stringify(obj);
     var options={
-        hostname:'localhost',
-        port:'9999',
+        hostname:'137.135.179.104',
+        //hostname: 'http://greatcoders.cloudapp.net',
+        port:'8999',
+        //uri:url,
         method: 'POST',
         path:'/create/',
         headers: {
