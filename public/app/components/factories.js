@@ -42,7 +42,7 @@ angular.module('myAppRename.factories', [])
             return $http.get(url + "/" + "allClasses");
         }
         api.getClassById = function (id) {                              //check path
-            return $http.get('/userApi' + "/" + "Class/"+id);
+            return $http.get(url + "/" + "Class/"+id);
         }
         return api;
     })

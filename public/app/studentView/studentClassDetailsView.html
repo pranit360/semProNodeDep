@@ -1,0 +1,13 @@
+<body>
+<h1> {{ title }}</h1>
+
+<label>Class id</label>
+<input type="text" ng-model="classId">
+<button class="btn btn-default" ng-click="getClassById()">See your object</button>
+<p>Name: <a href="#/student/viewSemesters/{{class._id}}">{{class.name}}</a></p>
+<p>Description: {{class.description}}</p>
+<p>Start time: {{class.startTime}}</p>
+<p>End time: {{class.endTime}}</p>
+
+<a href="#/student"> back </a>
+</body>
