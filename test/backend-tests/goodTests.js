@@ -328,7 +328,7 @@ describe('REST API for completed task', function () {
             if (!error && response.statusCode == 200) { //First we test if the new location is returned in the post's response.
                 body.receivedPoints.should.equal(24);
                 console.log(body);
-                body._id.should.be.length(24);
+                //body._id.should.be.length(24);
                 //var idForNewClass = body._id;
                 done();
                 //Then we check whether it actually was added to the DataBase
