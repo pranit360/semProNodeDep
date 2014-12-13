@@ -39,7 +39,7 @@ angular.module('myAppRename.student', ['ngRoute'])
     }])
 
     .controller('student1Ctrl', ['$scope', 'ClassFactory', function ($scope, ClassFactory) {
-        $scope.title = 'student1Ctrl';
+        $scope.title = 'Your class details';
 
         $scope.getClassById= function() {
             ClassFactory.getClassById($scope.classId)
@@ -54,35 +54,45 @@ angular.module('myAppRename.student', ['ngRoute'])
     }])
 
     .controller('student2Ctrl', ['$scope', 'StudentsFactory', 'ClassFactory', function ($scope, StudentsFactory, ClassFactory) {
-        $scope.title = 'Your class';
+        $scope.title = 'Your classmates';
 
-        $scope.getStudentByUserName = function () {
-            StudentsFactory.getStudentByUserName($scope.studentName)
+        $scope.getStudentsByClassId= function() {
+            StudentsFactory.getAllStudentsByClassId($scope.classId)
                 .success(function (data, status, headers, config) {
-                    $scope.wholeStudent = data;
-                   // console.log($scope.wholeStudent);
-
-                    StudentsFactory.getAllStudentsByClassId($scope.wholeStudent.classId)
-                        .success(function (data, status, headers, config) {
-                            $scope.students = data;
-                            console.log(data);
-                            ClassFactory.getClassById($scope.wholeStudent.classId)
-                                .success(function (data, status, headers, config) {
-                                    $scope.class = data;
-                                    console.log(data);
-                                }).
-                                error(function (data, status, headers, config) {
-                                    $scope.error = data;
-                                });
-                        }).
-                        error(function (data, status, headers, config) {
-                            $scope.error = data;
-                        });
+                    $scope.students = data;
                 }).
                 error(function (data, status, headers, config) {
                     $scope.error = data;
                 });
         }
+
+        //$scope.getStudentByUserName = function () {
+        //    StudentsFactory.getStudentByUserName($scope.studentName)
+        //        .success(function (data, status, headers, config) {
+        //            $scope.wholeStudent = data;
+        //           // console.log($scope.wholeStudent);
+        //
+        //            StudentsFactory.getAllStudentsByClassId($scope.wholeStudent.classId)
+        //                .success(function (data, status, headers, config) {
+        //                    $scope.students = data;
+        //                    console.log(data);
+        //                    ClassFactory.getClassById($scope.wholeStudent.classId)
+        //                        .success(function (data, status, headers, config) {
+        //                            $scope.class = data;
+        //                            console.log(data);
+        //                        }).
+        //                        error(function (data, status, headers, config) {
+        //                            $scope.error = data;
+        //                        });
+        //                }).
+        //                error(function (data, status, headers, config) {
+        //                    $scope.error = data;
+        //                });
+        //        }).
+        //        error(function (data, status, headers, config) {
+        //            $scope.error = data;
+        //        });
+        //}
     }])
 
     .controller('student3Ctrl', ['$scope', 'CompletedTaskFactory', function ($scope, CompletedTaskFactory) {

@@ -5,7 +5,6 @@
 <table class="table">
     <thead>
     <th>Name</th>
-    <th>View all scores for this period</th>
     <th>Description</th>
     <th>Maximum score</th>
     <th>Start time</th>
@@ -14,7 +13,6 @@
     <tbody>
     <tr ng-repeat="period in periods">
         <th><a href="#/student/viewTasks/{{period._id}}">{{period.name}}</a></th>
-        <th><a href="#/student/viewScores/{{period._id}}">All scores in {{period.name}}</a></th>
         <th>{{period.description}}</th>
         <th>{{period.maximumPoints}}</th>
         <th>{{period.startTime}}</th>

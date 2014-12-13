@@ -31,7 +31,7 @@ function getAllTeachersByClassId(classId, callback) {
 }
 
 function getAllTeachers(callback){
-    Teacher.find({}, function (err, teacherList) {
+    Teacher.find( function (err, teacherList) {
         if(err) {
             return callback(err);
         }
