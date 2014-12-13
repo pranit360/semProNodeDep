@@ -8,8 +8,8 @@ if (typeof global.TEST_DATABASE != "undefined") {
 }
 else {
 
-    dbURI = 'mongodb://test:test@ds055990.mongolab.com:55990/sempro'; //Madalina's account
-    //dbURI = 'mongodb://test:test@ds053090.mongolab.com:53090/3semproject'; //Sven's account
+    //dbURI = 'mongodb://test:test@ds055990.mongolab.com:55990/sempro'; //Madalina's account
+    dbURI = 'mongodb://test:test@ds053090.mongolab.com:53090/3semproject'; //Sven's account
 
 }
 
